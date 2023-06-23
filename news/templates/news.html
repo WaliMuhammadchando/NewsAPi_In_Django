@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>News</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .article {
+            border-bottom: 1px solid #ccc;
+            padding: 10px 0;
+        }
+
+        .title {
+            color: #333;
+            font-size: 18px;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        .description {
+            color: #666;
+            margin-top: 0;
+        }
+
+        .article:hover {
+            background-color: #f9f9f9;
+        }
+
+        .more-news {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .more-news-button {
+            padding: 10px 20px;
+            background-color: #4caf50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        .more-news-button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Latest News</h1>
+        <div id="news-container">
+            {% for article in articles|slice:":3" %}
+                <div class="article">
+                    <h2 class="title" onclick="toggleDescription(this)">{{ article.title }}</h2>
+                    <p class="description">{{ article.description }}</p>
+                    <p class="description">{{ article.content }}</p>
+                    <p class="url"> <a href="{{ article.url }}" > {{ article.url }} </a></p>
+
+                </div>
+            {% endfor %}
+        </div>
+
+        <div class="more-news">
+            <button class="more-news-button" onclick="loadMoreNews()">More News</button>
+        </div>
+    </div>
+
+
+</body>
+</html>
